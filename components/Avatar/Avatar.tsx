@@ -3,7 +3,7 @@ import styles from './Avatar.module.css'
 import { defaultAvatarBase64 } from './constants'
 
 type Props = {
-  id: number | undefined,
+  _id?: number | undefined,
   image: string,
   name: string | undefined,
 }

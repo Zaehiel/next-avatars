@@ -4,28 +4,24 @@ import AvatarModel from '../../lib/models/avatar'
 import styles from './Uploader.module.css'
 
 export default function Uploader() {
-  const [file, setFile] = useState<string>();
-  const [imagePreview, setImagePreview] = useState<string>("");
-  const [base64, setBase64] = useState<string>();
-  const [name, setName] = useState<string>();
-  const [size, setSize] = useState<string>();
+  const [file, setFile] = useState<string>('');
+  const [imagePreview, setImagePreview] = useState<string>('');
+  const [base64, setBase64] = useState<string>('');
+  const [name, setName] = useState<string>('');
+  const [size, setSize] = useState<string>('');
 
-  const onChange = (e: React.FormEvent | React.ChangeEvent) => {
+  const onChange = (e: React.FormEvent) => {
     if ((e.target as HTMLInputElement).type !== 'file') {
       return
     }
     
-    let file = (e.target as HTMLInputElement).files[0];
+    let file = (e.target as HTMLInputElement).files![0];
 
     if (file) {
       const reader = new FileReader();
       reader.onload = _handleReaderLoaded
       reader.readAsBinaryString(file)
     }
-  }
-
-  const updateName = (e: React.ChangeEvent) => {
-    setName(e.target.nodeValue);
   }
 
   const _handleReaderLoaded = (readerEvt: any) => {
@@ -70,7 +66,7 @@ export default function Uploader() {
       reader.onloadend = () => {
         setFile(file)
         setSize(file.size);
-        setImagePreview(reader.result)
+        setImagePreview(reader.result as string)
       }
       reader.readAsDataURL(file);
     }
@@ -81,7 +77,7 @@ export default function Uploader() {
       <div>
         <div className={styles.container}>
           <label htmlFor="file" className={styles.upload}>
-            <Avatar image={imagePreview} id={0} name={name}/>
+            <Avatar image={imagePreview} name={name}/>
           </label>
           <input
             type="file"
@@ -102,7 +98,6 @@ export default function Uploader() {
             id="name"
             placeholder="Player name"
             value={name}
-            onChange={(e) => updateName(e)}
           />
           <button type="submit">Upload</button>
       </div>

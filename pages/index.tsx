@@ -16,7 +16,7 @@ const Home: NextPage = ({ avatars }) => {
 
       <div className={styles.grid}>
         {
-          avatars.map((a: AvatarModel) => (<Avatar key={a._id} image={base64Prefix + a.image} name={a.name} />))
+          avatars.map((a: AvatarModel) => (<Avatar key={a._id as string} image={base64Prefix + a.image} name={a.name} />))
         }
       </div>
     </div>
