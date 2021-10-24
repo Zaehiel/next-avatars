@@ -7,14 +7,24 @@
   height: 140px;
   border-radius: 50%;
   overflow: hidden;
-  border: 3px solid black;
+  border: 6px solid rgb(190, 213, 240);
   cursor: pointer;
   padding: 0;
+}
+
+.button {
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  cursor: pointer;
 }
 
 .image {
   object-fit: cover;
   position: absolute;
+  width: 100%;
   top:50%;
   left:50%;
   transform: translate(-50%,-50%)
