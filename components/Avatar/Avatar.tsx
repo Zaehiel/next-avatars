@@ -1,5 +1,4 @@
 /* eslint-disable react/jsx-no-comment-textnodes */
-import { useState } from 'react'
 import styles from './Avatar.module.css'
 import { defaultAvatarBase64 } from './constants'
 
