@@ -1,11 +1,15 @@
-import type { NextPage } from 'next'
+import type { NextPage, GetServerSideProps } from 'next'
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import Avatar from '../components/Avatar'
 import { base64Prefix } from '../components/Avatar/constants'
 import AvatarModel from '../lib/models/avatar'
 
-const Home: NextPage = ({ avatars }) => {
+type SSRProps = {
+  avatars: AvatarModel[]
+}
+
+const Home: NextPage<SSRProps> = ({ avatars }) => {
   return (
     <div className={styles.container}>
       <Head>
@@ -23,7 +27,7 @@ const Home: NextPage = ({ avatars }) => {
   )
 }
 
-export async function getServerSideProps() {
+export const getServerSideProps: GetServerSideProps = async () => {
   const isDev = process.env.NODE_ENV !== 'production';
   let { DEV_URL, PROD_URL } = process.env;
   const response = await fetch(`${isDev ? DEV_URL : PROD_URL}/api/avatars`, {
