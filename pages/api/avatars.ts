@@ -22,7 +22,7 @@ async function getAvatars(req: Request, res: Response) {
         });
     } catch (error) {
         return res.json({
-            message: error.message!,
+            message: error?.message,
             success: false,
         });
     }
@@ -41,7 +41,7 @@ async function addAvatar(req: Request, res: Response) {
 
     } catch (error) {
         return res.json({
-            message: error.message!,
+            message: error?.message,
             success: false,
         });
     }
@@ -62,7 +62,7 @@ async function deleteAvatar(req: Request, res: Response) {
         });
     } catch (error) {
         return res.json({
-            message: error.message!,
+            message: error?.message,
             success: false,
         });
     }
