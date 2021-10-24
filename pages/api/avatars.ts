@@ -6,6 +6,19 @@ import Avatar from '../../lib/models/avatar'
 
 const AVATARS_COLLECTION = 'avatars';
 
+const errorHandler = (e: unknown, res: Response) => {
+    if (e instanceof Error) {
+        return res.json({
+            message: e.message,
+            success: false,
+        });
+    }
+    return res.json({
+        message: 'Something went wrong',
+        success: false,
+    });
+}
+
 // get all the avatars
 async function getAvatars(req: Request, res: Response) {
     try {
@@ -21,10 +34,7 @@ async function getAvatars(req: Request, res: Response) {
             success: true,
         });
     } catch (error) {
-        return res.json({
-            message: error?.message,
-            success: false,
-        });
+        errorHandler(error, res)
     }
 }
 
@@ -40,10 +50,7 @@ async function addAvatar(req: Request, res: Response) {
         });
 
     } catch (error) {
-        return res.json({
-            message: error?.message,
-            success: false,
-        });
+        errorHandler(error, res)
     }
 }
 
@@ -61,10 +68,7 @@ async function deleteAvatar(req: Request, res: Response) {
             success: true,
         });
     } catch (error) {
-        return res.json({
-            message: error?.message,
-            success: false,
-        });
+        errorHandler(error, res)
     }
 }
 
