@@ -19,7 +19,6 @@ const errorHandler = (e: unknown, res: Response) => {
     });
 }
 
-// get all the avatars
 async function getAvatars(req: Request, res: Response) {
     try {
         const { db } = await connectToDatabase();
@@ -38,7 +37,6 @@ async function getAvatars(req: Request, res: Response) {
     }
 }
 
-// Add new avatar
 async function addAvatar(req: Request, res: Response) {
     try {
         const { db } = await connectToDatabase();
@@ -54,11 +52,10 @@ async function addAvatar(req: Request, res: Response) {
     }
 }
 
-// deleting a post
 async function deleteAvatar(req: Request, res: Response) {
     try {
         const { db } = await connectToDatabase();
-
+        
         await db.collection(AVATARS_COLLECTION).deleteOne({
             _id: new ObjectId(req.body),
         });

@@ -1,4 +1,4 @@
-import React, { useState, ReactHTMLElement } from 'react';
+import React, { useState } from 'react';
 import Avatar from '../Avatar/Avatar';
 import AvatarModel from '../../lib/models/avatar'
 
@@ -84,7 +84,7 @@ export default function Uploader() {
               htmlFor="file"
               className="flex justify-center p-10 cursor-pointer border-dashed border-4 border-blue-200"
             >
-              <Avatar image={imagePreview} name={name}/>
+              <Avatar image={imagePreview}/>
             </label>
             <input
               type="file"

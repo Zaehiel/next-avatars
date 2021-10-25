@@ -10,7 +10,7 @@ export default function Navigation() {
                     </Link>
                 </li>
                 <li className="mx-2">
-                    <Link href="/add-avatar">
+                    <Link href="/upload">
                         <a>Upload</a>
                     </Link>
                 </li>
