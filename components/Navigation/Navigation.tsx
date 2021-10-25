@@ -1,18 +1,17 @@
 import Link from 'next/link'
-import styles from './Navigation.module.css'
 
 export default function Navigation() {
     return (
-        <nav className={styles.nav}>
-            <ul className={styles.list}>
-                <li className={styles.item}>
+        <nav className="p-4">
+            <ul className="list-none flex justify-center">
+                <li className="mx-2">
                     <Link href="/">
-                        <a>Home</a>
+                        <a>Avatars</a>
                     </Link>
                 </li>
-                <li>
+                <li className="mx-2">
                     <Link href="/add-avatar">
-                        <a>Add an avatar</a>
+                        <a>Upload</a>
                     </Link>
                 </li>
             </ul>
