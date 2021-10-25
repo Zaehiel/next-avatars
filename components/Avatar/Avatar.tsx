@@ -8,6 +8,7 @@ type Props = {
   image: string,
   name?: string,
   onClick?: () => void,
+  hoverEnabled?: boolean,
 }
 
 export default function Avatar(props: Props) {
@@ -29,7 +30,7 @@ export default function Avatar(props: Props) {
             className={styles.image}
           />
           {
-            isHovering
+            isHovering && props.hoverEnabled
             ? (
             <div className="absolute opacity-70 bg-gray-100 w-full h-full flex justify-center items-center inset-0">
                 <ImBin color="red" fontSize="2rem" />

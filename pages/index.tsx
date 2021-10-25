@@ -45,6 +45,7 @@ const Home: NextPage<SSRProps> = (props) => {
                     image={base64Prefix + a.image}
                     name={a.name}
                     onClick={deleteAvatar(a._id!)}
+                    hoverEnabled
                   />
                 )
               )}
