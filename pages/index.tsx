@@ -1,5 +1,5 @@
 import type { NextPage, GetServerSideProps } from 'next'
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react'
 import Head from 'next/head'
 import Avatar from '../components/Avatar'
 import { base64Prefix } from '../components/Avatar/constants'
@@ -10,17 +10,17 @@ type SSRProps = {
 }
 
 const Home: NextPage<SSRProps> = (props) => {
-  const [avatarsList, setAvatarsList] = useState<AvatarModel[]>(props.avatars);
+  const [avatarsList, setAvatarsList] = useState<AvatarModel[]>(props.avatars)
 
   useEffect(() => {
     setAvatarsList(props.avatars)
-  }, [props.avatars]);
+  }, [props.avatars])
 
   const deleteAvatar = (_id: string) => async () => {
       const response = await fetch('/api/avatars', {
         method: 'DELETE',
         body: _id,
-      });
+      })
 
       if (response.status === 200) {
         setAvatarsList(avatarsList.filter(a => a._id !== _id))
@@ -46,7 +46,6 @@ const Home: NextPage<SSRProps> = (props) => {
                     name={a.name}
                     onClick={deleteAvatar(a._id!)}
                   />
-                  
                 )
               )}
             </div>
@@ -57,18 +56,19 @@ const Home: NextPage<SSRProps> = (props) => {
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const isDev = process.env.NODE_ENV !== 'production';
-  let { DEV_URL, PROD_URL } = process.env;
+  const isDev = process.env.NODE_ENV !== 'production'
+  const { DEV_URL, PROD_URL } = process.env
   const response = await fetch(`${isDev ? DEV_URL : PROD_URL}/api/avatars`, {
       method: 'GET',
-  });
-  let data = await response.json();
+  })
+
+  const data = await response.json()
 
   return {
     props: {
         avatars: data.message,
     },
-  };
+  }
 }
 
 export default Home

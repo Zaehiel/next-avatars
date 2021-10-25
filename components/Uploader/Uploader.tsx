@@ -1,34 +1,34 @@
-import React, { useState } from 'react';
-import Avatar from '../Avatar/Avatar';
+import React, { useState } from 'react'
+import Avatar from '../Avatar/Avatar'
 import AvatarModel from '../../lib/models/avatar'
 
 export default function Uploader() {
-  const [file, setFile] = useState<undefined | File>(undefined);
-  const [imagePreview, setImagePreview] = useState('');
-  const [base64, setBase64] = useState('');
-  const [name, setName] = useState('');
-  const [size, setSize] = useState(0);
+  const [file, setFile] = useState<undefined | File>(undefined)
+  const [imagePreview, setImagePreview] = useState('')
+  const [base64, setBase64] = useState('')
+  const [name, setName] = useState('')
+  const [size, setSize] = useState(0)
 
   const onFormChange = (e: React.FormEvent) => {
     if ((e.target as HTMLInputElement).type !== 'file') {
       return
     }
     
-    let file = (e.target as HTMLInputElement).files![0];
+    const file = (e.target as HTMLInputElement).files![0]
 
     if (file) {
-      const reader = new FileReader();
+      const reader = new FileReader()
       reader.onload = _handleReaderLoaded
       reader.readAsBinaryString(file)
     }
   }
 
   const onInputChange = (e: React.FormEvent) => {
-    setName((e.target as HTMLInputElement).value);
+    setName((e.target as HTMLInputElement).value)
   }
 
   const _handleReaderLoaded = (readerEvt: any) => {
-    let binaryString = readerEvt.target.result;
+    let binaryString = readerEvt.target.result
     setBase64(btoa(binaryString))
   }
 
@@ -51,27 +51,25 @@ export default function Uploader() {
     const response = await fetch('/api/avatars', {
         method: 'POST',
         body: JSON.stringify(post),
-    });
+    })
 
     if (response.status === 200) {
       reset()
     }
-
-    // todo: add error handling
   }
 
   const photoUpload = (e: React.FormEvent) => {
-    e.preventDefault();
-    const reader = new FileReader();
-    const file = (e.target as HTMLInputElement).files![0];
+    e.preventDefault()
+    const reader = new FileReader()
+    const file = (e.target as HTMLInputElement).files![0]
 
     if (reader !== undefined && file !== undefined) {
       reader.onloadend = () => {
         setFile(file)
-        setSize(file.size);
+        setSize(file.size)
         setImagePreview(reader.result as string)
       }
-      reader.readAsDataURL(file);
+      reader.readAsDataURL(file)
     }
   }
 

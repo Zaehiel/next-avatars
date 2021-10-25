@@ -1,4 +1,4 @@
-import Uploader from '../components/Uploader/Uploader';
+import Uploader from '../components/Uploader/Uploader'
 
 export default function AddAvatar() {
     return (
@@ -7,5 +7,5 @@ export default function AddAvatar() {
                 <Uploader />
             </div>
         </div>
-    );
+    )
 }
