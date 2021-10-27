@@ -6,7 +6,8 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 # MongoDB
 
-Create MongoDB account and add a `.env`, to the root folder, file which contains databse setup credentials.
+Create MongoDB account and add a `.env` file to the root folder.
+This will contain database setup credentials:
 
 ```bash
 MONGODB_URI=
@@ -15,7 +16,7 @@ DEV_URL=http://localhost:3000
 PROD_URL=
 ```
 
-You can now proceed with installing and running the application locally.
+You can now proceed with installing and running the application locally:
 
 ```bash
 # install dependencies
