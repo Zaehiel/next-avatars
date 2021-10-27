@@ -6,7 +6,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 # MongoDB
 
-Create MongoDB account and add a `.env` file which contains databse setup credentials.
+Create MongoDB account and add a `.env`, to the root folder, file which contains databse setup credentials.
 
 ```bash
 MONGODB_URI=
