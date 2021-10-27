@@ -57,3 +57,4 @@ These weren't included as this is more of an M.V.P. of business requirements:
 * Validating/sanitzing user input (XSS)
 * Making application a11y compatible
 * Using tailwind for all stylings
+* Optimising how avatars list is queried (e.g. pagination, lazy load etc.)
